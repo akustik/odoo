@@ -22,4 +22,3 @@
 from . import models
 from . import reports
 
-print "hello world"

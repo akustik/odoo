@@ -10,10 +10,10 @@
                 <xpath expr="//field[@name='discount']" position="attributes">
                     <attribute name="digits">[16, 2]</attribute>
                 </xpath>
-                <xpath expr="//field[@name='amount_untaxed']" position="after">
+                <xpath expr="//field[@name='tax_totals_json']" position="after">
                         <field name="amount_discount"/>
                 </xpath>
-                <xpath expr="//field[@name='narration']" position="after">
+                <xpath expr="//field[@name='narration']" position="before">
                     <div>
                         <label for="discount_type" string="Discount Type :"/>
                         <field name="discount_type" class="oe_inline"/>

@@ -3,7 +3,7 @@
 #
 #    Cybrosys Technologies Pvt. Ltd.
 #
-#    Copyright (C) 2020-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
+#    Copyright (C) 2021-TODAY Cybrosys Technologies(<https://www.cybrosys.com>).
 #    Author: Faslu Rahman(odoo@cybrosys.com)
 #
 #    You can modify it under the terms of the GNU AFFERO
@@ -22,7 +22,7 @@
 
 {
     'name': 'Sale Discount on Total Amount',
-    'version': '14.0.1.1.0',
+    'version': '15.0.1.0.0',
     'category': 'Sales Management',
     'live_test_url': 'https://www.youtube.com/watch?v=CigmHe9iC4s&feature=youtu.be',
     'summary': "Discount on Total in Sale and Invoice With Discount Limit and Approval",

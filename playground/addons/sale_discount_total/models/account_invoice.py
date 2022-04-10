@@ -162,7 +162,7 @@ class AccountInvoice(models.Model):
                     line.discount = discount
                     line._onchange_price_subtotal()
 
-            inv._compute_invoice_taxes_by_group()
+            inv._compute_tax_totals_json()
     #
 
     def button_dummy(self):
