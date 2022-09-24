@@ -1,0 +1,7 @@
+"Activo","Puede publicar","Descripción","Unidad de medida","Unidad de medida compra","Descripción de compra","Código de barras","Impuestos del cliente","Impuestos de proveedor","Cantidad a mano","Coste","Nombre","Puede ser comprado","Categoría del Producto","Referencia interna","Tipo de producto","Precio de venta","Puede ser vendido"
+"True","True","","Unidades","Unidades","","","IVA 21% (Bienes)","21% IVA soportado (bienes corrientes)","0.0","0.0","Descuento","","","DISC","Consumible","0.0","True"
+"True","True","control de stock iva4","Unidades","Unidades","","","IVA 4% (Bienes)","21% IVA soportado (bienes corrientes)","0.0","0.0","EJEMPLO1","True","","","Almacenable","1.0","True"
+"True","True","Este es un producto de ejemplo usado cuando el cliente paga su deuda sin ordenar productos nuevos. Este es un modo alterno para el hecho de que Odoo necesita tener al menos un producto en la orden para validad la transacción.","Unidades","Unidades","","","","","0.0","0.0","Pagar Deuda","True","","POS-DEBT","Servicio","0.0","True"
+"True","True","","Unidades","Unidades","","","","21% IVA soportado (bienes corrientes)","0.0","0.0","Propinas","True","","TIPS","Consumible","1.0","True"
+"True","True","sin control de stock iva0","Unidades","Unidades","","","No sujeto Repercutido (Bienes)","21% IVA soportado (bienes corrientes)","0.0","0.0","ejemplo2","True","","","Consumible","1.0","True"
+"True","True","control stock iva 10 en Kg","kg","kg","","","IVA 10% (Bienes)","21% IVA soportado (bienes corrientes)","0.0","0.0","ejemplo3","True","","","Almacenable","1.0","True"
