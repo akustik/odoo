@@ -34,14 +34,20 @@ def parse_observaciones (row, field):
             return result[0] or "Unidades"
    except Exception as err:
         print("Cannot parse " + str(source) + " for " + field + ". " + row["Nombre"])
-   return ""
+   return "N/A"
+
+def parse_stock(row):
+    source = row["stockfis"]
+    if(source) >= 0:
+        return source
+    else:
+        return 0
 
 df = clevercsv.read_dataframe("articulos.csv", delimiter=",", quotechar="\"", escapechar="", header=0).rename(columns={
     "pvp": "Precio de venta",
     "codbarras": "Código de barras",
     "descripcion": "Nombre",
     "costemedio": "Coste",
-    "stockfis": "Cantidad a mano",
     "referencia": "Referencia interna",    
 })
 
@@ -69,7 +75,9 @@ df["Tipo de producto"] = df.apply (lambda row: "Almacenable", axis=1)
 # VERIFY: What options and how to decide?
 df["Categoría del Producto"] = df.apply (lambda row: "Sin categoría", axis=1)
 
-(df[[
+df["Cantidad a mano"] = df.apply(lambda row: parse_stock(row), axis=1)
+
+res_df = df[[
     "Activo",
     "Puede publicar",
     "Descripción",
@@ -89,5 +97,8 @@ df["Categoría del Producto"] = df.apply (lambda row: "Sin categoría", axis=1)
     "Precio de venta",
     "Puede ser vendido",
 ]]
+
+
+(res_df[(res_df["Unidad de medida"] != "N/A") & (res_df["Unidad de medida compra"] != "N/A") & (res_df["Descripción de compra"] != "N/A")]
 .to_csv("articulos.odoo.csv", index=False, quoting=csv.QUOTE_ALL))
 
