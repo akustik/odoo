@@ -26,12 +26,13 @@ def parse_codimpuesto (row):
 # Xampinyó laminat
 # Mongeta vermella
 # Vermut d&#39;ullastrell 750 ml, EL CELLER D&#39;ULLASTRELL
-def parse_observaciones (row, field):
+def parse_observaciones (row, field, dict, default_value):
    source = row["observaciones"]
    try:
         result = [a.split("=")[1] for a in source.split(";") if field in a]
         if len(result) == 1:
-            return result[0] or "Unidades"
+            key = result[0] or default_value
+            return dict.get(key, key)
    except Exception as err:
         print("Cannot parse " + str(source) + " for " + field + ". " + row["Nombre"])
    return "N/A"
@@ -64,9 +65,9 @@ df["Descripción"] = df.apply (lambda row: row["observaciones"], axis=1)
 df["Impuestos del cliente"] = df.apply (lambda row: parse_codimpuesto(row), axis=1)
 
 # VERIFY: Visible? Multiplicador? Origen?
-df["Unidad de medida"] = df.apply (lambda row: parse_observaciones(row, "Unitat_Venda"), axis=1)
-df["Unidad de medida compra"] = df.apply (lambda row: parse_observaciones(row, "Unitat_Compra"), axis=1)
-df["Descripción de compra"] = df.apply (lambda row: parse_observaciones(row, "Nom_Compra"), axis=1)
+df["Unidad de medida"] = df.apply (lambda row: parse_observaciones(row, "Unitat_Venda", {"unitat": "Unidades"}, "Unidades"), axis=1)
+df["Unidad de medida compra"] = df.apply (lambda row: parse_observaciones(row, "Unitat_Compra", {"unitat": "Unidades"}, "Unidades"), axis=1)
+df["Descripción de compra"] = df.apply (lambda row: parse_observaciones(row, "Nom_Compra", {}, ""), axis=1)
 
 # VERIFY: Condition for not setting provider taxes
 df["Impuestos de proveedor"] = df.apply (lambda row: "21% IVA soportado (bienes corrientes)", axis=1)
